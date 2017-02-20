@@ -1,0 +1,10 @@
+
+#these are jsut some generally useful commands to use
+
+#change permission of all files (and only files) in this directory and all sub
+#directories to 644 (-rw-r--r--)
+sudo find . -type f -exec chmod 644 {} +
+
+#change permission of all directories (and only directories) in this 
+#directory and all subdirectories to 755 (-rwx-r-xr-x)
+sudo find . -type d -exec chmod 755 {} +
