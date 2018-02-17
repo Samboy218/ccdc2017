@@ -18,11 +18,13 @@ iptables -A INPUT  -m state --state RELATED,ESTABLISHED -j ACCEPT
 
 #allow DNS and HTTP to get out (for browsing and updating with apt)
 iptables -A OUTPUT -p tcp --dport 80 -m state --state NEW -j ACCEPT
+iptables -A OUTPUT -p tcp --dport 443 -m state --state NEW -j ACCEPT
 iptables -A OUTPUT -p tcp --dport 53 -m state --state NEW -j ACCEPT
 iptables -A OUTPUT -p udp --dport 53 -m state --state NEW -j ACCEPT
 
 #allow new traffic to talk to web server
 iptables -A INPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -m state --state NEW,ESTABLISHED -j ACCEPT
 
 iptables -A INPUT -p tcp --sport 3306 --dport 1024:65535 -m state --state NEW -j ACCEPT
 iptables -A OUTPUT -p tcp --sport 1024:65535 --dport 3306 -m state --state NEW -j ACCEPT

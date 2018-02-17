@@ -1,0 +1,10 @@
+sudo yum install mysql-server
+set password for 'user'@'localhost' = password('passwordHere');
+or
+alter user 'user'@'localhost' identified by 'passwordHere';
+create user 'user'@'localhost' identified by 'passwordHere';
+create database joomla;
+grant all privileges on joomla.* to 'user'@'localhost' identified by 'passwordHere';
+flush permissions;
+
+restart apache (sudo service httpd restart)

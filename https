@@ -1,0 +1,12 @@
+
+mkdir /etc/httpd/ssl
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/httpd/ssl/apache.key -out /etc/httpd/ssl/apache.crt
+
+#edit /etc/httpd/conf.d/ssl.conf
+#edit ServerName to be <servername>:443
+#make sure that matches the common name from the cert
+#make these lines match:
+#SSLEngine on
+#SSLCertificateFile /etc/httpd/ssl/apache.crt
+#SSLCertificateKeyFile /etc/httpd/ssl/apache.key 
+#restart apache
